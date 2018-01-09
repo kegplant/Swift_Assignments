@@ -79,3 +79,41 @@ func tossMultipleCoins(num : Int) -> Double {
     return Double(numOfHeads)/Double(num)
 }
 tossMultipleCoins(num: 200)
+
+//some random codes
+func twoMults(num:Int)->(two:Int,three:Int){two=num*2;three=num*3;return (two,three)}
+    mults=twoMults(num:2)
+
+//Graphics primitive
+import UIKit
+struct Point{
+    var X:Double
+    var Y:Double
+}
+struct Line {
+    var Start:Point
+    var End:Point
+    func length()->Double{
+        let dx=self.Start.X-self.End.X
+        let dy=self.Start.Y-self.End.Y
+        return sqrt(dx*dx+dy*dy)
+    }
+}
+struct Triangle{
+    var Points:[Point]
+    func area()->Double{
+        //calc theta: nope
+        let ab=Line(Start:self.Points[0],End:self.Points[1]).length()
+        let bc=Line(Start:self.Points[1],End:self.Points[2]).length()
+        let ca=Line(Start:self.Points[2],End:self.Points[0]).length()
+        let p=(ab+bc+ca)/2
+        return sqrt(p*(p-ab)*(p-bc)*(p-ca))
+    }
+}
+let a=Point(X:0,Y:0)
+let b=Point(X:1,Y:1)
+let c=Point(X:2,Y:0)
+var ab=Line(Start:a,End:b)
+var abc=Triangle(Points:[a,b,c])
+ab.length()
+abc.area()
