@@ -101,7 +101,7 @@ struct Line {
 }
 struct Triangle{
     var Points:[Point]
-    func area()->Double{
+    func area()->Double{ //heron's formula
         //calc theta: nope
         let ab=Line(Start:self.Points[0],End:self.Points[1]).length()
         let bc=Line(Start:self.Points[1],End:self.Points[2]).length()
